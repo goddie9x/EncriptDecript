@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 
-namespace EncryptDecrypt
+namespace TEncryptDecrypt
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -126,10 +126,10 @@ namespace EncryptDecrypt
                             continue;
                         }
                     }
+                    System.Windows.MessageBox.Show("Action success");
                 }
-                System.Windows.MessageBox.Show("Action success");
-                KeyDecrypt.IsEnabled = false;
-                KeyEncrypt.IsEnabled = false;
+                KeyDecrypt.IsEnabled = true;
+                KeyEncrypt.IsEnabled = true;
             }
         }
         #endregion
