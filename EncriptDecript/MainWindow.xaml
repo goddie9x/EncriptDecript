@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TEncryptDecrypt"
         mc:Ignorable="d"
-        Title="TEnDeCryptX" Height="200" Width="800" Icon="/logo192.png" WindowStartupLocation="CenterScreen">
+        Title="TEnDeCryptX" Height="200" Width="503" Icon="/logo192.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="MainTab" SelectionChanged="MainTab_SelectionChanged">
             <TabControl.ItemsPanel>
@@ -25,21 +25,8 @@
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="598*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="ESelectButton" IsEnabled="False" Content="Select folder" Grid.Column="9" HorizontalAlignment="Left" Margin="135,67,0,0" VerticalAlignment="Top" Height="60" Width="132" Click="SelectButton_Click"/>
-                    <TextBox x:Name="KeyEncrypt" Grid.Column="9" HorizontalAlignment="Left" Margin="134,27,0,0" Text="Key encrypt" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="26" AutomationProperties.HelpText="Enter key to encrypt here" TextChanged="KeyEncrypt_TextChanged"/>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="Decryptab" Header="Decrypt file">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="81*"/>
-                        <ColumnDefinition Width="680*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="DSelectButton" IsEnabled="False" Content="Select folder" HorizontalAlignment="Left" Margin="217,67,0,0" VerticalAlignment="Top" Height="60" Width="132" Grid.Column="4" Click="SelectButton_Click"/>
-                    <TextBox x:Name="KeyDecrypt" Grid.Column="4" HorizontalAlignment="Left" Margin="216,27,0,0" Text="Key decrypt" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="26" AutomationProperties.HelpText="Enter key to encrypt here" TextChanged="KeyDecrypt_TextChanged"/>
+                    <Button x:Name="ESelectButton" IsEnabled="False" Content="Select folder" Grid.Column="9" HorizontalAlignment="Left" Margin="51,78,0,0" VerticalAlignment="Top" Height="60" Width="132" Click="SelectButton_Click"/>
+                    <TextBox x:Name="KeyEncrypt" Grid.Column="9" HorizontalAlignment="Left" Margin="49,24,0,0" Text="Key" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="26" AutomationProperties.HelpText="Enter key to encrypt here" TextChanged="KeyEncrypt_TextChanged"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="AboutTab" Header="About">

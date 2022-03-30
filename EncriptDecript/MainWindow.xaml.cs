@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
 
@@ -40,14 +30,7 @@ namespace TEncryptDecrypt
                     System.Windows.MessageBox.Show("Key must not empty!");
                     isEnableButton = false;
                 }
-                if (ESelectButton != null)
-                {
-                    ESelectButton.IsEnabled = isEnableButton;
-                }
-                if (DSelectButton != null)
-                {
-                    DSelectButton.IsEnabled = isEnableButton;
-                }
+                 ESelectButton.IsEnabled = isEnableButton;
             }
         }
         public MainWindow()
@@ -70,19 +53,9 @@ namespace TEncryptDecrypt
         {
             startEnOrDeCrypt();
         }
-
-        private void KeyDecrypt_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            _Key = KeyDecrypt.Text;
-            if(KeyEncrypt != null)
-                KeyEncrypt.Text = _Key;
-        }
-
         private void KeyEncrypt_TextChanged(object sender, TextChangedEventArgs e)
         {
             _Key = KeyEncrypt.Text;
-            if (KeyDecrypt != null)
-                KeyDecrypt.Text = _Key;
         }
         #endregion
         #region method 
@@ -103,16 +76,17 @@ namespace TEncryptDecrypt
             System.Windows.Forms.DialogResult result = folderBrowserDialog.ShowDialog();
             if (!string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
             {
-                KeyDecrypt.IsEnabled = false;
                 KeyEncrypt.IsEnabled = false;
                 byte[] edKey = Encoding.Unicode.GetBytes(_Key);
                 string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath);
                 System.Windows.MessageBoxResult choice =
                     System.Windows.MessageBox.Show("Do you want to encrypt all file inside this folder? " + folderBrowserDialog.SelectedPath + " ?", "Warning!!!", MessageBoxButton.YesNo);
+                ProgressBar.Visibility = Visibility.Visible;
                 if (choice == MessageBoxResult.Yes)
                 {
                     foreach (var filePath in files)
                     {
+                        ProgressBar.Value = 30;
                         try
                         {
                             File.Copy(filePath, filePath + ".back");
@@ -125,10 +99,12 @@ namespace TEncryptDecrypt
                         {
                             continue;
                         }
+                        ProgressBar.Value = 50;
                     }
+                    ProgressBar.Value = 100;
                     System.Windows.MessageBox.Show("Action success");
+                    ProgressBar.Visibility = Visibility.Hidden;
                 }
-                KeyDecrypt.IsEnabled = true;
                 KeyEncrypt.IsEnabled = true;
             }
         }
